@@ -4,4 +4,21 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Atributos\" />
+    <Folder Include="Blocos\" />
+    <Folder Include="Elementos\" />
+    <Folder Include="Enumeracoes\" />
+    <Folder Include="Esquemas\" />
+    <Folder Include="Graphics\" />
+    <Folder Include="Modelo\" />
+    <Folder Include="Structs\" />
+    <Folder Include="Properties\" />
+    <Folder Include="Tools\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PDFClown.NET" Version="2.0.0" />
+  </ItemGroup>
+
 </Project>
