@@ -3,12 +3,12 @@ using System.Text.RegularExpressions;
 
 namespace ZionDanfe.Tools
 {
-    internal static class Utils
+    public static class Utils
     {
         /// <summary>
         /// Verifica se uma string contém outra string no formato chave: valor.
         /// </summary>
-        public static Boolean StringContemChaveValor(string str, string chave, string valor)
+        public static bool StringContemChaveValor(string str, string chave, string valor)
         {
             if (string.IsNullOrWhiteSpace(chave)) throw new ArgumentException(nameof(chave));
             if (string.IsNullOrWhiteSpace(str)) return false;
