@@ -5,16 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Atributos\" />
-    <Folder Include="Blocos\" />
-    <Folder Include="Elementos\" />
-    <Folder Include="Enumeracoes\" />
-    <Folder Include="Esquemas\" />
-    <Folder Include="Graphics\" />
-    <Folder Include="Modelo\" />
-    <Folder Include="Structs\" />
     <Folder Include="Properties\" />
-    <Folder Include="Tools\" />
   </ItemGroup>
 
   <ItemGroup>
