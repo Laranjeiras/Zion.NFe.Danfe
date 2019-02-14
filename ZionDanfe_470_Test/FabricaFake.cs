@@ -121,7 +121,7 @@ namespace ZionDanfe_470_Test
                     Ie = "12334",
                     EnderecoUf = "RS",
                     PesoLiquido = 456.7794,
-                    Marca = "DanfeSharp",
+                    Marca = "ZionDanfe",
                     EnderecoNumero = "101",
                     ModalidadeFrete = 4,
                     PesoBruto = 101.1234

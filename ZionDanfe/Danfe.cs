@@ -114,7 +114,7 @@ namespace ZionDanfe
             info[new org.pdfclown.objects.PdfName("ChaveAcesso")] = ViewModel.ChaveAcesso;
             info[new org.pdfclown.objects.PdfName("TipoDocumento")] = "DANFE";
             info.CreationDate = DateTime.Now;
-            info.Creator = string.Format("{0} {1} - {2}", "DanfeSharp", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version, "https://github.com/SilverCard/DanfeSharp");
+            info.Creator = string.Format("{0} {1} - {2}", "ZionDanfe", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version, "https://github.com/Laranjeiras/ZionDanfe");
             info.Title = "DANFE (Documento auxiliar da NFe)";
         }
 

@@ -44,7 +44,7 @@ namespace ZionDanfe
 
         public void DesenharCreditos()
         {
-            Gfx.DrawString("Desenvolvido por @laranjeiras e impresso com DanfeSharp", RetanguloCreditos, Danfe.EstiloPadrao.CriarFonteItalico(6), AlinhamentoHorizontal.Direita);
+            Gfx.DrawString(Strings.TextoCreditos, RetanguloCreditos, Danfe.EstiloPadrao.CriarFonteItalico(6), AlinhamentoHorizontal.Direita);
         }
 
         private void DesenharCanhoto()

@@ -10,5 +10,6 @@
         public const string Quantidade = "Quantidade";
         public const string RazaoSocial = "Razão Social";
         public const string TextoConsulta = "Consulta de autenticidade no portal nacional da NF-e www.nfe.fazenda.gov.br/portal ou no site da Sefaz Autorizadora";
+        public const string TextoCreditos = "Desenvolvido por ZionDanfe (zideun@outlook.com)";
     }
 }
