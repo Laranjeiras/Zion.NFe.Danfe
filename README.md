@@ -6,6 +6,7 @@ A biblioteca PDF Clown é utilizada para a escrita dos arquivos em PDF.
 
 Exemplo de uso:
 
+```C#
 using ZionDanfe;
 using ZionDanfe;
 
@@ -22,7 +23,7 @@ var modelo = new DanfeViewModel()
     Emitente = new EmpresaViewModel()
     {
         CnpjCpf = "123456...",
-        Nome = "DanfeSharp Ltda",    
+        Nome = "ZionDanfe Ltda",    
 	...
 
 
@@ -32,3 +33,4 @@ using (var danfe = new Danfe(modelo))
 	danfe.Gerar();
 	danfe.Salvar("danfe.pdf");
 }
+```
