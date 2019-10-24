@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DanfeSharp.Esquemas.NFe;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -175,6 +176,14 @@ namespace ZionDanfe.Modelo
         /// </summary>
         public List<string> NotasFiscaisReferenciadas { get; set; }
 
+        #region Local Retirada e Entrega
+
+        public LocalEntregaRetiradaViewModel LocalRetirada { get; set; }
+
+        public LocalEntregaRetiradaViewModel LocalEntrega { get; set; }
+
+        #endregion
+
         #region Informações adicionais de compra
 
         /// <summary>
@@ -200,12 +209,28 @@ namespace ZionDanfe.Modelo
         /// <summary>
         /// Exibi os valores do ICMS Interestadual e Valor Total dos Impostos no bloco Cálculos do Imposto.
         /// </summary>
-        public bool ExibirIcmsInterestadual { get; set; }
+        public bool ExibirIcmsInterestadual { get; set; } = true;
 
         /// <summary>
         /// Exibi os valores do PIS e COFINS no bloco Cálculos do Imposto.
         /// </summary>
-        public bool ExibirPisConfins { get; set; }
+        public bool ExibirPisConfins { get; set; } = true;
+
+        /// <summary>
+        /// Exibi o bloco "Informações do local de entrega" quando o elemento "entrega" estiver disponível.
+        /// </summary>
+        public bool ExibirBlocoLocalEntrega { get; set; } = true;
+
+        /// <summary>
+        /// Exibi o bloco "Informações do local de retirada" quando o elemento "retirada" estiver disponível.
+        /// </summary>
+        public bool ExibirBlocoLocalRetirada { get; set; } = true;
+
+
+        /// <summary>
+        /// Exibe o Nome Fantasia, caso disponível, ao invés da Razão Social no quadro identificação do emitente.
+        /// </summary>
+        public bool PreferirEmitenteNomeFantasia { get; set; } = true;
 
         #endregion
 
@@ -230,11 +255,7 @@ namespace ZionDanfe.Modelo
             Transportadora = new TransportadoraViewModel();
             CalculoIssqn = new CalculoIssqnViewModel();
             NotasFiscaisReferenciadas = new List<string>();
-
-            ExibirIcmsInterestadual = true;
-            ExibirPisConfins = true;
         }
-
 
         public Boolean MostrarCalculoIssqn { get; set; }
 
@@ -348,6 +369,11 @@ namespace ZionDanfe.Modelo
 
         public Boolean IsRetrato => Orientacao == Orientacao.Retrato;
         public Boolean IsPaisagem => Orientacao == Orientacao.Paisagem;
+
+        public void DefinirTextoCreditos(string textoCreditos)
+        {
+            Strings.TextoCreditos = textoCreditos;
+        }
 
     }
 }

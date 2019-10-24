@@ -30,14 +30,14 @@ namespace ZionDanfe.Blocos
         /// </summary>
         public virtual Boolean VisivelSomentePrimeiraPagina => true;
 
-        public virtual string Cabecalho => null;
+        public virtual String Cabecalho => null;
 
         public BlocoBase(DanfeViewModel viewModel, Estilo estilo) : base(estilo)
         {
             MainVerticalStack = new VerticalStack();
             ViewModel = viewModel ?? throw new ArgumentNullException(nameof(viewModel));
 
-            if (!string.IsNullOrWhiteSpace(Cabecalho))
+            if (!String.IsNullOrWhiteSpace(Cabecalho))
             {
                 MainVerticalStack.Add(new CabecalhoBloco(estilo, Cabecalho));
             }
