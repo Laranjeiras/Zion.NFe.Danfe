@@ -25,13 +25,24 @@ var modelo = new DanfeViewModel()
     {
         CnpjCpf = "123456...",
         Nome = "ZionDanfe Ltda",    
-	...
+	    ...
+    }
+}
 
+modelo.DefinirTextoCreditos("Criado por ...");
 
-//Inicia o Danfe com o modelo criado
+//Inicia o Danfe com o modelo criado e salva no arquivo
 using (var danfe = new Danfe(modelo))
 {
 	danfe.Gerar();
 	danfe.Salvar("danfe.pdf");
+}
+
+//Inicia o Danfe o obtem os Bytes do PDF Gerado
+var pdfStream = new MemoryStream();                           
+using (var danfe = new Danfe(modelo))
+{
+    danfe.Gerar();
+    var bytesPdf = danfe.GetBytes(pdfStream);
 }
 ```

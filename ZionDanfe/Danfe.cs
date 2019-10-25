@@ -215,14 +215,22 @@ namespace ZionDanfe
         {
             if (string.IsNullOrWhiteSpace(path)) throw new ArgumentException(nameof(path));
 
-            File.Save(path, SerializationModeEnum.Incremental);
+            File.Save(path, SerializationModeEnum.Incremental);            
         }
 
         public void Salvar(System.IO.Stream stream)
         {
             if (stream == null) throw new ArgumentNullException(nameof(stream));
 
-            File.Save(new org.pdfclown.bytes.Stream(stream), SerializationModeEnum.Incremental);
+            File.Save(new org.pdfclown.bytes.Stream(stream), SerializationModeEnum.Incremental);            
+        }
+
+        public Byte[] ObterPdfBytes(System.IO.Stream stream)
+        {
+            if (stream == null) throw new ArgumentNullException(nameof(stream));
+            var pdfStrean = new org.pdfclown.bytes.Stream(stream);
+            File.Save(pdfStrean, SerializationModeEnum.Incremental);
+            return pdfStrean.ToByteArray();
         }
 
         #region IDisposable Support
