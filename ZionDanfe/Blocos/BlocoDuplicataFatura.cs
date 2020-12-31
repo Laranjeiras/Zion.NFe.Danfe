@@ -13,7 +13,7 @@ namespace ZionDanfe.Blocos
             var de = viewModel.Duplicatas.Select(x => new Duplicata(estilo, x)).ToList();
             var eh = de.First().Height;
 
-            int numeroElementosLinha = ViewModel.IsPaisagem ? 7 : 6;
+            int numeroElementosLinha = ViewModel.Orientacao == Orientacao.Paisagem ? 7 : 6;
 
             int i = 0;
 

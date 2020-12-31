@@ -104,7 +104,8 @@ namespace ZionDanfe.Modelo
         /// </summary>
         public static DanfeViewModel CriarDeStringXml(string str)
         {
-            if (str == null) throw new ArgumentNullException(nameof(str));
+            if (str == null) 
+                throw new ArgumentNullException(nameof(str));
 
             using (StringReader sr = new StringReader(str))
             {
@@ -127,7 +128,7 @@ namespace ZionDanfe.Modelo
             {
                 if (e.InnerException is XmlException)
                 {
-                    XmlException ex = (XmlException)e.InnerException;
+                    var ex = (XmlException)e.InnerException;
                     throw new Exception(string.Format("Não foi possível interpretar o Xml. Linha {0} Posição {1}.", ex.LineNumber, ex.LinePosition));
                 }
 
@@ -145,9 +146,7 @@ namespace ZionDanfe.Modelo
                 if (ide.dhSaiEnt.HasValue) model.DataSaidaEntrada = ide.dhSaiEnt?.DateTimeOffsetValue.DateTime;
 
                 if (model.DataSaidaEntrada.HasValue)
-                {
                     model.HoraSaidaEntrada = model.DataSaidaEntrada?.TimeOfDay;
-                }
             }
             else
             {
@@ -155,9 +154,7 @@ namespace ZionDanfe.Modelo
                 model.DataSaidaEntrada = ide.dSaiEnt;
 
                 if (!string.IsNullOrWhiteSpace(ide.hSaiEnt))
-                {
                     model.HoraSaidaEntrada = TimeSpan.Parse(ide.hSaiEnt);
-                }
 
             }
         }
@@ -197,14 +194,10 @@ namespace ZionDanfe.Modelo
             model.TipoEmissao = ide.tpEmis;
 
             if (ide.mod != 55)
-            {
                 throw new NotSupportedException("Somente o mod==55 está implementado.");
-            }
 
             if (!FormasEmissaoSuportadas.Contains(model.TipoEmissao))
-            {
                 throw new NotSupportedException($"O tpEmis {ide.tpEmis} não é suportado.");
-            }
 
             model.Orientacao = ide.tpImp == 1 ? Orientacao.Retrato : Orientacao.Paisagem;
 
@@ -224,14 +217,10 @@ namespace ZionDanfe.Modelo
 
             // Local retirada e entrega 
             if (infNfe.retirada != null)
-            {
                 model.LocalRetirada = CreateLocalRetiradaEntrega(infNfe.retirada);
-            }
 
             if (infNfe.entrega != null)
-            {
                 model.LocalEntrega = CreateLocalRetiradaEntrega(infNfe.entrega);
-            }
 
             model.NotasFiscaisReferenciadas = ide.NFref.Select(x => x.ToString()).ToList();
 
@@ -290,15 +279,13 @@ namespace ZionDanfe.Modelo
 
             if (infNfe.cobr != null)
             {
-                foreach (var item in infNfe.cobr.dup)
+                var duplicatas = infNfe.cobr.dup.Select(x => new DuplicataViewModel
                 {
-                    DuplicataViewModel duplicata = new DuplicataViewModel();
-                    duplicata.Numero = item.nDup;
-                    duplicata.Valor = item.vDup;
-                    duplicata.Vecimento = item.dVenc;
-
-                    model.Duplicatas.Add(duplicata);
-                }
+                    Numero = x.nDup,
+                    Valor = x.vDup,
+                    Vecimento = x.dVenc
+                });
+                model.Duplicatas = duplicatas.ToList();
             }
 
             model.CalculoImposto = CriarCalculoImpostoViewModel(infNfe.total.ICMSTot);
@@ -368,7 +355,6 @@ namespace ZionDanfe.Modelo
             // Contingência SVC-AN e SVC-RS
             if (model.TipoEmissao == FormaEmissao.ContingenciaSVCAN || model.TipoEmissao == FormaEmissao.ContingenciaSVCRS)
             {
-
                 model.ContingenciaDataHora = ide.dhCont?.DateTimeOffsetValue.DateTime;
                 model.ContingenciaJustificativa = ide.xJust;
             }
@@ -378,10 +364,10 @@ namespace ZionDanfe.Modelo
 
         private static LocalEntregaRetiradaViewModel CreateLocalRetiradaEntrega(LocalEntregaRetirada local)
         {
-            var m = new LocalEntregaRetiradaViewModel()
+            var m = new LocalEntregaRetiradaViewModel
             {
                 NomeRazaoSocial = local.xNome,
-                CnpjCpf = !String.IsNullOrWhiteSpace(local.CNPJ) ? local.CNPJ : local.CPF,
+                CnpjCpf = !string.IsNullOrWhiteSpace(local.CNPJ) ? local.CNPJ : local.CPF,
                 InscricaoEstadual = local.IE,
                 Bairro = local.xBairro,
                 Municipio = local.xMun,
@@ -393,15 +379,11 @@ namespace ZionDanfe.Modelo
             StringBuilder sb = new StringBuilder();
             sb.Append(local.xLgr);
 
-            if (!String.IsNullOrWhiteSpace(local.nro))
-            {
+            if (!string.IsNullOrWhiteSpace(local.nro))
                 sb.Append(", ").Append(local.nro);
-            }
 
-            if (!String.IsNullOrWhiteSpace(local.xCpl))
-            {
+            if (!string.IsNullOrWhiteSpace(local.xCpl))
                 sb.Append(" - ").Append(local.xCpl);
-            }
 
             m.Endereco = sb.ToString();
 

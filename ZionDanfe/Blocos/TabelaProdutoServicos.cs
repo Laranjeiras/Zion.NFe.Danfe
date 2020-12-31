@@ -28,7 +28,7 @@ namespace ZionDanfe.Blocos
             Tabela = new Tabela(Estilo);
             var cabecalho4 = ViewModel.Emitente.CRT == "3" ? "O/CST" : "O/CSOSN";
 
-            if (ViewModel.IsRetrato)
+            if (ViewModel.Orientacao == Orientacao.Retrato)
             {
                 Tabela
                 .ComColuna(8.5f, ac, "CÓDIGO", "PRODUTO")
@@ -46,7 +46,7 @@ namespace ZionDanfe.Blocos
                 .ComColuna(3.5F, ad, "ALIQ.", "ICMS")
                 .ComColuna(3.5F, ad, "ALIQ.", "IPI");
             }
-            else
+            if (ViewModel.Orientacao == Orientacao.Paisagem)
             {
                 Tabela
                 .ComColuna(8.1f, ac, "CÓDIGO PRODUTO")
@@ -103,7 +103,6 @@ namespace ZionDanfe.Blocos
             CabecalhoBloco.Width = Width;
             CabecalhoBloco.Draw(gfx);
         }
-
 
         public RectangleF RetanguloTabela => BoundingBox.CutTop(CabecalhoBloco.Height);
         public Boolean CompletamenteDesenhada => Tabela.LinhaAtual == ViewModel.Produtos.Count;
