@@ -58,7 +58,7 @@ namespace ZionDanfe.Tools
         public static string FormatarEnderecoLinha1(string endereco, int? numero, string complemento = null)
         {
             string sNumero = numero.HasValue ? numero.Value.ToString() : null;
-            return FormatarEnderecoLinha1(endereco, numero, complemento);
+            return FormatarEnderecoLinha1(endereco, sNumero, complemento);
         }
 
         /// <summary>
