@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Alexandre Laranjeiras</Authors>
+    <Company>ZideunCo</Company>
+    <Description>Gerador de DANFE NFE modelo 55 em PDF</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Copyright>Copyright ©  2019</Copyright>
+    <NeutralLanguage>pt-BR</NeutralLanguage>
+    <PackageProjectUrl>https://github.com/Laranjeiras/Zion.Danfe</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Laranjeiras/Zion.Danfe</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>Danfe Nfe</PackageTags>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
+    <Version>1</Version>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
+    <PackageId>Zion.Danfe</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PDFClown.NET" Version="2.0.0" />
+  </ItemGroup>
+
+</Project>
