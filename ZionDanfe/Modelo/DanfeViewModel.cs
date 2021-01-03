@@ -1,10 +1,10 @@
 ﻿using DanfeSharp.Esquemas.NFe;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using ZionDanfe.Enumeracoes;
-using ZionDanfe.Esquemas;
 using ZionDanfe.Tools;
 using ZionDanfe.Tools.Extensions;
 
@@ -344,7 +344,7 @@ namespace ZionDanfe.Modelo
                 sb.AppendChaveValor("Nota de Empenho", NotaEmpenho);
 
 
-            foreach (var nfref in NotasFiscaisReferenciadas)
+            foreach (var nfref in NotasFiscaisReferenciadas.Take(5))
             {
                 if (sb.Length > 0) sb.Append(" ");
                 sb.Append(nfref);
@@ -367,13 +367,9 @@ namespace ZionDanfe.Modelo
             return sb.ToString();
         }
 
-        public Boolean IsRetrato => Orientacao == Orientacao.Retrato;
-        public Boolean IsPaisagem => Orientacao == Orientacao.Paisagem;
-
         public void DefinirTextoCreditos(string textoCreditos)
         {
             Strings.TextoCreditos = textoCreditos;
         }
-
     }
 }

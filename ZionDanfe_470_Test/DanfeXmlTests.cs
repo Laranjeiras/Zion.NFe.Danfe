@@ -18,6 +18,18 @@ namespace ZionDanfe_470_Test
                 Directory.CreateDirectory(OutputDirectory);
         }
 
+        [TestMethod]
+        public void TestXml()
+        {
+            var xmlPath = @".\nfe.xml";
+            var outPdfFilePath = Path.Combine(OutputDirectory, Path.GetFileNameWithoutExtension(xmlPath) + ".pdf");
+            var model = DanfeViewModelCreator.CriarDeArquivoXml(xmlPath);
+            using (Danfe danfe = new Danfe(model))
+            {
+                danfe.Gerar();
+                danfe.Salvar(outPdfFilePath);
+            }
+        }
         public void TestXml(String xmlPath)
         {
             var outPdfFilePath = Path.Combine(OutputDirectory, Path.GetFileNameWithoutExtension(xmlPath) + ".pdf");
